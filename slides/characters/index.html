@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Guides of the House of Advanced Practice</title>
+    <meta
+      name="description"
+      content="A full-screen slide deck introducing the clinical guide characters for The House of Advanced Practice."
+    >
+    <link rel="icon" href="../../favicon.ico" sizes="any">
+    <link rel="icon" href="../../assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#slides">Skip to slides</a>
+
+    <header class="deck-header" aria-label="Slide deck controls">
+      <a class="back-link" href="../../index.html#house">Back to House</a>
+      <div class="progress-wrap" aria-hidden="true">
+        <span class="progress-label" id="progress-label">1 / 12</span>
+        <span class="progress-track">
+          <span class="progress-bar" id="progress-bar"></span>
+        </span>
+      </div>
+    </header>
+
+    <main id="slides" class="deck" tabindex="-1" aria-live="polite">
+      <section class="slide is-active" id="slide-stage" aria-labelledby="slide-title">
+        <div class="slide-bg" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="slide-grid">
+          <div class="slide-copy">
+            <p class="eyebrow" id="slide-kicker"></p>
+            <h1 id="slide-title"></h1>
+            <p class="subtitle" id="slide-subtitle"></p>
+            <div class="guide-meta" id="guide-meta"></div>
+            <p class="core-question" id="core-question"></p>
+            <ul class="teaching-points" id="teaching-points"></ul>
+            <p class="guide-speaks" id="guide-speaks"></p>
+          </div>
+
+          <figure class="avatar-panel">
+            <div class="avatar-orbit" id="avatar-art" aria-hidden="true"></div>
+            <figcaption id="avatar-caption"></figcaption>
+          </figure>
+        </div>
+      </section>
+    </main>
+
+    <nav class="deck-nav" aria-label="Slide navigation">
+      <button type="button" id="previous-slide">Previous</button>
+      <div class="dot-list" id="dot-list" aria-label="Slide progress"></div>
+      <button type="button" id="next-slide">Next</button>
+    </nav>
+
+    <section class="print-deck" id="print-deck" aria-hidden="true"></section>
+
+    <script src="slides.js"></script>
+  </body>
+</html>

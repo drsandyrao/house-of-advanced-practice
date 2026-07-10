@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The House of Advanced Practice</title>
+    <meta
+      name="description"
+      content="An interactive memory palace for accountable graduate social work clinical decision-making."
+    >
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="assets/css/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow" data-site="eyebrow">Graduate Social Work Clinical Practice</p>
+        <h1 id="page-title" data-site="title">The House of Advanced Practice</h1>
+        <p class="lede" data-site="subtitle">A memory palace for accountable clinical decision-making.</p>
+      </div>
+      <div class="header-actions">
+        <a class="guide-link" href="slides/characters/index.html">Meet the Guides</a>
+        <button class="notebook-toggle" type="button" aria-controls="notebook" aria-expanded="false">
+          Notebook
+        </button>
+      </div>
+    </header>
+
+    <div class="app-shell">
+      <main id="main-content" tabindex="-1">
+        <section class="floor-plan-section" id="house" aria-labelledby="floor-plan-title">
+          <h2 id="floor-plan-title" class="sr-only">Interactive floor plan</h2>
+
+          <div class="plan-toolbar" aria-label="Floor plan controls">
+            <button type="button" data-zoom="out" aria-label="Zoom out">−</button>
+            <button type="button" data-zoom="reset">Reset view</button>
+            <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+          </div>
+
+          <div class="plan-shell" id="plan-shell">
+            <div class="plan-canvas" id="plan-canvas">
+              <svg
+                id="house-plan"
+                class="house-plan"
+                viewBox="0 0 1200 760"
+                role="img"
+                aria-labelledby="plan-title plan-description"
+              >
+                <title id="plan-title">Top-down illustrated map of The House of Advanced Practice</title>
+                <desc id="plan-description">
+                  A casual puzzle-style educational world map of clinical decision-making rooms.
+                </desc>
+
+                <defs>
+                  <filter id="softPop" x="-20%" y="-20%" width="140%" height="150%">
+                    <feDropShadow dx="0" dy="8" stdDeviation="0" flood-color="#2f5d50" flood-opacity="0.18"></feDropShadow>
+                    <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#ffffff" flood-opacity="0.55"></feDropShadow>
+                  </filter>
+                </defs>
+
+                <rect class="map-base" x="24" y="24" width="1152" height="712" rx="18"></rect>
+                <path class="map-water" d="M54 626 C140 574 230 594 300 534 C382 464 306 386 388 324 C478 256 544 318 612 238 C676 164 790 170 842 242 C900 322 1014 278 1080 350 C1150 426 1058 522 1148 602 V724 H54 Z"></path>
+                <path class="map-river" d="M44 382 C172 342 252 386 356 310 C466 232 540 286 602 372 C672 468 790 442 882 366 C958 304 1024 318 1142 284"></path>
+                <path class="map-path" d="M602 402 C494 328 376 248 230 190 M602 402 C604 286 612 196 600 162 M602 402 C734 306 842 236 974 184 M602 402 C744 434 872 466 968 462 M602 402 C478 430 342 444 220 438 M602 402 C478 516 360 590 247 625 M602 402 C604 500 604 584 600 640"></path>
+                <path class="map-path path-ring" d="M432 308 C506 244 682 244 764 314 C846 384 810 512 718 562 C626 612 466 586 406 500 C348 418 360 370 432 308 Z"></path>
+
+                <g class="map-landmarks" aria-hidden="true">
+                  <path class="landmark grove" d="M76 86 h158 q34 0 34 34 v76 q0 34 -34 34 h-158 q-34 0 -34 -34 v-76 q0 -34 34 -34z"></path>
+                  <path class="landmark meadow" d="M78 454 h178 q42 0 42 42 v70 q0 42 -42 42 h-178 q-42 0 -42 -42 v-70 q0 -42 42 -42z"></path>
+                  <path class="landmark ridge" d="M970 70 h138 q34 0 34 34 v124 q0 34 -34 34 h-138 q-34 0 -34 -34 v-124 q0 -34 34 -34z"></path>
+                </g>
+
+                <g id="world-decor" class="world-sweets" aria-hidden="true"></g>
+                <g id="map-sites"></g>
+              </svg>
+            </div>
+          </div>
+
+          <div class="plan-legend" id="plan-legend" aria-live="polite">
+            <p class="eyebrow">Room in focus</p>
+            <h2 id="legend-room">The Commons</h2>
+            <p id="legend-question">Given everything we know, what should happen next?</p>
+          </div>
+
+          <nav class="room-directory" aria-labelledby="directory-title">
+            <h2 id="directory-title">Text room directory</h2>
+            <div id="room-directory-list"></div>
+          </nav>
+        </section>
+      </main>
+
+      <aside class="detail-panel" id="detail-panel" aria-labelledby="room-title" aria-hidden="true">
+        <div class="detail-panel-inner">
+          <button class="return-button" type="button" data-close-room>
+            Return to the full house
+          </button>
+
+          <div class="quest-hero">
+            <p class="quest-kicker">Clinical quest unlocked</p>
+            <h2 id="room-title"></h2>
+            <p class="guide" id="room-guide"></p>
+            <div class="quest-stats" aria-label="Room progress details">
+              <span id="room-level-panel">Room</span>
+              <span id="room-move-count">4 moves</span>
+              <span id="room-standard-count">Standards</span>
+            </div>
+          </div>
+
+          <div class="quest-progress" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <section class="mission-card" aria-labelledby="mission-title">
+            <p class="mission-label">Mission question</p>
+            <h3 id="mission-title">Decide your next move</h3>
+            <p id="room-question"></p>
+          </section>
+
+          <section class="room-scene" aria-labelledby="scene-title">
+            <h3 id="scene-title">Room challenge</h3>
+            <p id="room-scene"></p>
+          </section>
+
+          <p class="room-explanation" id="room-explanation"></p>
+
+          <section class="panel-block prompt-block">
+            <h3>Moves to try</h3>
+            <ul id="room-prompts"></ul>
+          </section>
+
+          <section class="panel-block scenario-block">
+            <h3>Scenario checkpoint</h3>
+            <p id="room-scenario"></p>
+          </section>
+
+          <section class="reward-strip" aria-labelledby="reward-title">
+            <h3 id="reward-title">What you collect here</h3>
+            <p id="room-reward"></p>
+          </section>
+
+          <section class="panel-block standards-block">
+            <h3>Professional standards</h3>
+            <ul id="room-standards"></ul>
+          </section>
+
+          <section class="panel-block note-block">
+            <label class="note-label" for="room-note">Clinical Decision Notebook</label>
+            <textarea id="room-note" rows="7" placeholder="Add brief notes for this room."></textarea>
+            <button type="button" id="save-note">Save room note</button>
+          </section>
+        </div>
+      </aside>
+
+      <aside class="notebook" id="notebook" aria-labelledby="notebook-title">
+        <div class="notebook-header">
+          <div>
+            <p class="eyebrow">Persistent panel</p>
+            <h2 id="notebook-title">Clinical Decision Notebook</h2>
+          </div>
+          <button class="notebook-close" type="button" aria-label="Close notebook">Close</button>
+        </div>
+
+        <p class="notebook-context">
+          Current room: <strong id="active-room-name">The Commons</strong>
+        </p>
+        <div id="notebook-room-list" class="notebook-room-list"></div>
+
+        <div class="notebook-actions" aria-label="Notebook actions">
+          <button type="button" id="summary-button">Generate summary</button>
+          <button type="button" id="print-button">Print summary</button>
+          <button type="button" id="download-button">Download summary</button>
+          <button type="button" id="reset-notes">Reset notes</button>
+        </div>
+
+        <p class="save-status" id="save-status" role="status" aria-live="polite"></p>
+
+        <section class="summary" id="summary" aria-labelledby="summary-title">
+          <h3 id="summary-title">Clinical Decision Summary</h3>
+          <div id="summary-content" class="summary-content">
+            <p class="summary-empty">Generate a summary after adding notes.</p>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <script src="assets/data/site-data.js"></script>
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>

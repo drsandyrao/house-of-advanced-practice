@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="The House of Advanced Practice icon">
+  <rect width="64" height="64" rx="14" fill="#F8F6F2"/>
+  <path d="M13 29 32 13l19 16v23H13z" fill="#2F5D50"/>
+  <path d="M21 35h22v17H21z" fill="#FDFBF7"/>
+  <circle cx="32" cy="37" r="9" fill="#B58A57"/>
+  <path d="M32 28v18M23 37h18M26 31l12 12M38 31 26 43" stroke="#353535" stroke-width="2" stroke-linecap="round"/>
+</svg>
